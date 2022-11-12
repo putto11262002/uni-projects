@@ -1,0 +1,87 @@
+@startuml
+
+' === Style Tweaks ===
+
+skinparam {
+  ParticipantPadding 20
+  BoxPadding 10
+  Style StrictUML
+  RoundCorner 5
+  ParticipantPadding 10
+  Padding 2
+  SequenceStereotype {
+    Font {
+      Size 11
+      Style plain
+    }
+  }
+  Database {
+    BorderColor #A80036
+  }
+}
+
+
+' === Actors / Participants
+
+actor "Customer" as customer
+box "Web Browser"
+participant "view-products" as viewProductPage << HTML >>
+participant "view-products.js" as viewProductController << Vue >>
+participant "axios" as axios <<HTTP client>>
+end box
+box "Web Server"
+participant "Server" as server << Jooby >>
+participant "ProductModule" as productModule << Jooby >>
+participant "ProductDAO" as dao <<DAO>>
+end box
+database "Database" as db
+
+
+
+' === Interactions ===
+
+customer -> viewProductPage++ : view page
+viewProductPage -> viewProductController++ : <<mounted>>
+viewProductController -> viewProductController++ : getCategoryFromQueryParam()
+viewProductController -> axios++ :  get("/api/categories/" + category)
+axios -> server++ : HTTP GET /api/categories/{category}
+server -> productModule++ : get("/api/categories/{category}")
+productModule -> dao++ : filterByCategory(category)
+dao -> db++ : SELECT * FROM PRODUCT WHERE CATEGORY = :category
+return result
+return products
+return products
+return JSON encoded products
+return Javascript products
+axios--
+return Merge template with products data
+return display product list to user
+'user -> createAccountPage++ : enters customer details into form
+'user -> createAccountPage : clicks "Create Account" button
+'
+'createAccountPage -> createAccountServlet++ : POST student form data
+'
+'createAccountServlet -> customer++ : construct from form data
+'return customer
+'
+'createAccountServlet -> validator++ : validate customer fields
+'
+'return
+'
+'
+'
+'createAccountServlet -> dao++ : save(customer)
+'
+'dao -> db++ : INSERT INTO CUSTOMER (USERNAME, PASSWORD, FIRST_NAME, SURNAME, EMAIL_ADDRESS, SHIPPING_ADDRESS) \nVALUES (:username, :password, :firstName, :surname, :emailAddress, :shippingAddress)
+'return
+'
+'return
+'
+'createAccountServlet -> signInPage : redirect
+'
+'signInPage -> user : customer ready to sign in
+
+
+
+
+@enduml

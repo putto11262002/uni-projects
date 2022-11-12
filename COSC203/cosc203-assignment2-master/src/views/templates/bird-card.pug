@@ -1,0 +1,51 @@
+div(class="card p-0 col-12 col-md-3 mx-3 custom-card")
+    if bird.status !== "All"
+        div(class=`card-circle ${bird.status.replace(" ", "-")}`)
+    div(class="card-img-container rounded")
+        img(class="rounded", src=`/images/${bird.photo.source}`)
+        div(class="card-img-overlay")
+        h4(class="card-primary_name text-white m-0")=bird.primary_name
+        p(class="card-image_credit text-white m-0 fs-8")=bird.photo.credit
+    div(class="card-body border border-white")
+        ul(class="list-group list-group-flush")
+            li(class="list-group-item px-0 fs-8 ellipsis")
+                b English name
+                =" "
+                span=bird.english_name
+
+            li(class="list-group-item px-0 fs-8 ellipsis")
+                b Scientific name
+                =" "
+                span=bird.scientific_name
+
+            li(class="list-group-item px-0 fs-8 ellipsis")
+                b Family
+                =" "
+                span=bird.family
+
+            li(class="list-group-item px-0 fs-8 ellipsis text-nowrap")
+                b Order
+                =" "
+                span=bird.order
+
+            li(class="list-group-item px-0 fs-8 ellipsis text-nowrap")
+                b Status
+                =" "
+                span=bird.status
+
+            li(class="list-group-item px-0 fs-8 ellipsis text-nowrap")
+                b Length
+                =" "
+                span=bird.size.length.value
+                =" "
+                span=bird.size.length.units
+
+            li(class="list-group-item px-0 fs-8 ellipsis text-nowrap")
+                b Weight
+                =" "
+                span=bird.size.weight.value
+                =" "
+                span=bird.size.weight.units
+        a(href=`/view-bird/${bird._id}`)
+            button(class="btn btn-primary btn-sm w-100 mt-2") View bird
+

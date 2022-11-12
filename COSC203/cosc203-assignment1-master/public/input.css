@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.main-section-height {
+    height: calc(100vh - theme(spacing.12) - theme(spacing.10));
+}
+
+

@@ -1,0 +1,61 @@
+@startuml
+
+' === Style Tweaks ===
+
+skinparam {
+  Style StrictUML
+  RoundCorner 5
+  ParticipantPadding 10
+  Padding 2
+  SequenceStereotype {
+    Font {
+      Size 11
+      Style plain
+    }
+  }
+  Database {
+    BorderColor #A80036
+  }
+}
+
+
+' === Actors / Participants
+
+actor "User" as user
+participant "sign-in" as signInPage << JSP Page >>
+participant "signInServlet" as signInServlet <<Servlet>>
+participant "index" as indexPage << JSP Page >>
+participant "Session" as session
+participant "CustomerJdbiDAO" as dao << DAO >>
+database "Database" as db
+
+
+' === Interactions ===
+
+user -> signInPage++ : enters username and password
+user -> signInPage : clicks "Sign in" button
+signInPage -> signInServlet++ : POST username and password
+
+signInServlet -> dao++ : authenticate(username, password)
+
+dao -> db++ : SELECT EXISTS (SELECT * FROM CUSTOMER WHERE USERNAME = :username AND password = :password)
+
+return result
+
+return result
+
+signInServlet -> dao++ : getByUsername(username)
+
+dao -> db++ : SELECT * FROM CUSTOMER WHERE USERNAME = :username
+
+return result
+
+return customer
+signInServlet -> session++ : setAttribute("customer", customer)
+return
+
+signInServlet -> index : redirect
+
+index -> user : user is signed in 
+
+@enduml

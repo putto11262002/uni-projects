@@ -1,0 +1,9 @@
+div(class="modal fade", id="deleteModal", tabindex="-1", aria-labelledby="deleteModalLabel", aria-hidden="true")
+    div(class="modal-dialog")
+        div(class="modal-content")
+            div(class="modal-body")
+                p(class="text-center") Do you want to delete this bird?
+            div(class="modal-footer")
+                button(class="btn btn-danger", type="button", data-bs-dismiss="modal") No
+                a(href=`/api/bird/${bird.id}/delete`)
+                    button(class="btn btn-primary", type="button") Yes

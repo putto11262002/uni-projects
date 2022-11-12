@@ -1,0 +1,9 @@
+aside(class="offcanvas offcanvas-start" tabindex="-1", id="sidebar" aria-labelledby="sidebar-label")
+    div(class="offcanvas-header border-bottom")
+        h5(class="offcanvas-title", id="offcanvas-label") Menu
+        button(class="btn-close", type="button", data-bs-toggle="offcanvas", data-bs-target="#sidebar", aria-controls="sidebar")
+    div(class="offcanvas-body")
+        include navigation
+        if includeFilterForm
+            include form_filter
+            include status-legend

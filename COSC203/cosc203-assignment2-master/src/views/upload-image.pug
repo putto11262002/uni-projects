@@ -1,0 +1,41 @@
+doctype html
+html
+    head
+        title Birds of Aotearoa
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel="icon", type="image/x-icon", href="/favicon.ico")
+        link(href="/bootstrap/css/bootstrap.min.css", rel="stylesheet" )
+        link(href="/bootstrap-icons/bootstrap-icons.css", rel="stylesheet")
+        link(href="/css/custom-style.css",rel="stylesheet")
+        script(src="/bootstrap/js/bootstrap.min.js")
+        script(src="/js/preview-img.js")
+    body
+        include templates/header
+        include templates/sidebar
+        main(class="container  p-3")
+            div(class="row justify-content-center g-3")
+                h5(class="text-center") Upload bird image
+                div(class="col-12 col-md-7 d-flex justify-content-center align-items-center")
+                    img(class="w-75 g-75", src=`/images/${photo.source}`, id="img-preview")
+                form(action=`/image/${id}`, method="POST", class="col-12 col-md-7 container-fluid py-3", enctype='multipart/form-data')
+                    div(class="row g-3")
+                        div(class="col-12")
+                            label(class="form-label") Bird image
+                            input(type="file", class="form-control", name="bird-image", id="fileInput", onchange="handleFileChange(event)")
+
+                        div(class="col-12")
+                            label(class="form-label") Credit
+                            input(type="text", class="form-control", name="credit", value=photo.credit)
+
+                        div(class="col-12")
+                            button(class="btn btn-primary w-100", type="submit") Upload image
+
+                        div(class="col-12")
+                            a(class="text-white text-decoration-none w-100", href="/")
+                                button(class="btn btn-primary w-100", type="button") Skip
+        include templates/footer
+            
+
+
+

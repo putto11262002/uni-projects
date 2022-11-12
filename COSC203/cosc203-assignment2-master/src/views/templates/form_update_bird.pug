@@ -1,0 +1,57 @@
+form(action=form_action, method=method, class="col-12 col-md-6 container")
+
+    div(class="row g-3")
+        div(class="col-12")
+            label(class="form-label") Primary name
+            input(type="text", value=bird.primary_name, name="primary_name", class="form-control", required)
+
+        div(class="col-12")
+            label(class="form-label") English name
+            input(type="text", value=bird.english_name, name="english_name", class="form-control", required)
+
+        div(class="col-12")
+            label(class="form-label") Scientific name
+            input(type="text", value=bird.scientific_name, name="scientific_name", class="form-control", required)
+
+        div(class="col-12")
+            label(class="form-label") Order
+            input(type="text", value=bird.order, name="order", class="form-control", required)
+
+        div(class="col-12")
+            label(class="form-label") Family
+            input(type="text", value=bird.family, name="family", class="form-control", required)
+
+        div(class="col-12")
+            label(class="form-label") Status
+            select(class="form-select", name="status", required)
+                option(value="All", selected=bird.status.replace(" ", "-") === "All") All
+                option(value="Not-Threatened", selected=bird.status.replace(" ", "-") === "Not-Threatened") Not Threatened
+                option(value="Naturally-Uncommon", selected=bird.status.replace(" ", "-") === "Naturally-Uncommon") Naturally Uncommon
+                option(value="Relict", selected=bird.status.replace(" ", "-") === "Relict") Relict
+                option(value="Recovering", selected=bird.status.replace(" ", "-") === "Recovering") Recovering
+                option(value="Declining", selected=bird.status.replace(" ", "-") === "Declining") Declining
+                option(value="Nationally-Increasing", selected=bird.status.replace(" ", "-") === "Nationally-Increasing") Nationally Increasing
+                option(value="Nationally-Vulnerable", selected=bird.status.replace(" ", "-") === "Nationally-Vulnerable") Nationally Vulnerable
+                option(value="Nationally-Endangered", selected=bird.status.replace(" ", "-") === "Nationally-Endangered") Nationally Endangered
+                option(value="Nationally-Critical", selected=bird.status.replace(" ", "-") === "Nationally-Critical") Nationally Critical
+                option(value="Data-Deficient", selected=bird.status.replace(" ", "-") === "Data-Deficient") Data Deficient
+
+        div(class="col")
+            label(class="form-label") Length (cm)
+            input(type="number", class="form-control", value=bird.size.length.value, name="size[length][value]", required)
+
+
+        div(class="col-12")
+            label(class="form-label") Weight (g)
+            input(type="number", class="form-control", value=bird.size.weight.value, name="size[weight][value]", required)
+
+
+        div(class="col=12")
+            button(class="btn btn-primary w-100", type="submit") Submit and upload image
+
+
+
+
+
+
+

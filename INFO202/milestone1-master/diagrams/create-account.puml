@@ -1,0 +1,65 @@
+@startuml
+
+' === Style Tweaks ===
+
+skinparam {
+  Style StrictUML
+  RoundCorner 5
+  ParticipantPadding 10
+  Padding 2
+  SequenceStereotype {
+    Font {
+      Size 11
+      Style plain
+    }
+  }
+  Database {
+    BorderColor #A80036
+  }
+}
+
+
+' === Actors / Participants
+
+actor "User" as user
+participant "create-account" as createAccountPage << JSP Page >>
+participant "sign-in" as signInPage << JSP Page >>
+participant "CreateAccount" as createAccountServlet <<Servlet>>
+participant "CustomerJdbiDAO" as dao << DAO >>
+participant "Validator" as validator << Oval Validator>>
+participant "Customer" as customer <<domain>>
+database "Database" as db
+
+
+
+' === Interactions ===
+
+user -> createAccountPage++ : enters customer details into form
+user -> createAccountPage : clicks "Create Account" button
+
+createAccountPage -> createAccountServlet++ : POST student form data
+
+createAccountServlet -> customer++ : construct from form data
+return customer
+
+createAccountServlet -> validator++ : validate customer fields
+
+return
+
+
+
+createAccountServlet -> dao++ : save(customer)
+
+dao -> db++ : INSERT INTO CUSTOMER (USERNAME, PASSWORD, FIRST_NAME, SURNAME, EMAIL_ADDRESS, SHIPPING_ADDRESS) \nVALUES (:username, :password, :firstName, :surname, :emailAddress, :shippingAddress)
+return
+
+return
+
+createAccountServlet -> signInPage : redirect
+
+signInPage -> user : customer ready to sign in
+
+
+
+
+@enduml

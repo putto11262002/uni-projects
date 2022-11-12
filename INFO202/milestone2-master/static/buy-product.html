@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buy Product</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/external/vue.global.js"></script>
+    <script src="js/external/vuex.global.js"></script>
+    <script src="js/external/vuex-persistedstate.js"></script>
+    <script src="js/external/axios.js"></script>
+    <script src="js/buy-product.js" type="module" defer></script>
+</head>
+<body>
+<navmenu></navmenu>
+<header>
+    <h1 v-if="pageStatus === 'ready'">{{product.name}}</h1>
+    <h1 v-else>...</h1>
+</header>
+
+<main v-if="pageStatus === 'ready'">
+    <div class="error-messages">
+        <p v-if="error">{{error}}</p>
+    </div>
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>ID:</strong></td><td>{{product.productId}}</td>
+            </tr>
+            <tr>
+                <td><strong>Name:</strong></td><td>{{product.name}}</td>
+            </tr>
+            <tr>
+                <td><strong>Description:</strong></td><td>{{product.description}}</td>
+            </tr>
+            <tr>
+                <td><strong>Price:</strong></td><td>{{formatCurrency(product.listPrice)}}</td>
+            </tr>
+            <tr>
+                <td><strong>Quantity Available:</strong></td><td>{{formatNumber(product.quantityInStock, 0)}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <form class="form__buy-product" @submit.prevent="addToCart()">
+      <div>
+          <label>Quantity</label>
+          <input required v-model="quantity" type="number">
+      </div>
+        <button>Add to card</button>
+    </form>
+</main>
+<main v-else-if="pageStatus === 'successful'">
+    <h3 class="text-center">Product successfully added to card. <br> <a class="text-center" href="view-products.html">Continue shopping</a>
+        <br> <a class="text-center" href="cart.html">Check out</a>
+    </h3>
+</main>
+<main v-else>
+    <h3 class="text-center">No product selected. <br> <a class="text-center" href="view-products.html">Continue shopping</a></h3>
+
+</main>
+
+
+</body>
+</html>

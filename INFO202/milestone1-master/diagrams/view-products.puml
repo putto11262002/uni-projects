@@ -1,0 +1,64 @@
+@startuml
+
+' === Style Tweaks ===
+
+skinparam {
+  Style StrictUML
+  RoundCorner 5
+  ParticipantPadding 10
+  Padding 2
+  SequenceStereotype {
+    Font {
+      Size 11
+      Style plain
+    }
+  }
+  Database {
+    BorderColor #A80036
+  }
+}
+
+
+' === Actors / Participants
+
+actor "User" as user
+participant "view-products" as viewPage << JSP Page >>
+participant "Session" as session
+participant "ProductJdbiDAO" as dao << DAO >>
+database "Database" as db
+
+
+' === Interactions ===
+
+user -> viewPage++ : visits
+
+
+viewPage -> dao++ : getCategories()
+
+return categoris
+
+viewPage -> viewPage : render category filter list
+
+viewPage -> session++ : getAttribute("category")
+
+return category
+
+alt category is "all"
+    viewPage -> dao++ : getProducts()
+    dao -> db++ : SELECT * FROM PRODUCT
+    return result
+    return products
+
+
+else category it not "all"
+    viewPage -> dao++ : filterByCategory(category)
+    dao -> db++ : SELECT * FROM PRODUCT WHERE CATEGORY = :categor
+    return result
+    return products
+end
+
+viewPage -> viewPage : render products table
+
+viewPage -> user : displays content
+
+@enduml

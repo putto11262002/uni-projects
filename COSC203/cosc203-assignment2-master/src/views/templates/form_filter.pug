@@ -1,0 +1,48 @@
+h5 Filter birds
+form(action='/' method='GET', class="container-fluid m-0 p-0")
+    div(class="row g-3")
+        div(class="col-12")
+            label(for='search', class="form-label") Search
+            input(type='text' name='search' id='search' placeholder="search...", class="form-control")
+
+        div(class="col-12")
+            label(for='status', class="form-label") Conservation Status
+            select(name='status' id='status', class="form-select")
+                option(selected) All
+                option(class="Not-Threatened") Not Threatened
+                option(class="Naturally-Uncommon") Naturally Uncommon
+                option(class="Relict") Relict
+                option(class="Recovering") Recovering
+                option(class="Declining") Declining
+                option(class="Nationally-Increasing") Nationally Increasing
+                option(class="Nationally-Vulnerable") Nationally Vulnerable
+                option(class="Nationally-Endangered") Nationally Endangered
+                option(class="Nationally-Critical") Nationally Critical
+                option(class="Data-Deficient") Data Deficient
+
+        div(class="col-12")
+            label(for='sort', class="form-label") Sort By
+            select(name='sort', id='sort', class="form-select")
+                optgroup(label='Name')
+                    option(value='alphabetical') alphabetical
+                    option(value='Reverse alphabetical') Reverse alphabetical
+                optgroup(label='Length')
+                    option(value='Shortest to longest') Shortest to longest
+                    option(value='Longest to shortest') Longest to shortest
+                optgroup(label='Weight')
+                    option(value='Lightest to heaviest') Lightest to heaviest
+                    option(value='Heaviest to lightest') Heaviest to lightest
+                optgroup(label='Conservation Status')
+                    option(value='Unthreatened to endangered') Unthreatened to endangered
+                    option(value='Endangered to unthreatened') Endangered to unthreatened
+
+        div(class="col-12")
+            button(type='submit', class="btn btn-primary w-100") Filter Birds
+
+        div(class="col-12")
+            a(class="w-100", href="/")
+                button(type='button', class="btn btn-primary w-100") Reset Filter
+
+        p= `${birds.length} birds found`
+
+    script(src="js/populateFilterForm.js")

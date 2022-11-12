@@ -1,0 +1,38 @@
+<%@page import="domain.Customer"%>
+<%@ page pageEncoding="UTF-8" %>
+<nav>
+    <%
+      
+        Customer customer =  (Customer) session.getAttribute("customer");
+        
+    %>
+    <ul>
+        <li><a href="index.jsp">Home</a></li>
+            <%
+                if (customer == null) {
+            %>
+        <li><a href="sign-in.jsp">Sign In</a></li>
+            <%
+                }
+            %>
+        
+           <%
+                if (customer != null) {
+            %>
+       <li><a href="view-products.jsp">Browse Products</a></li>
+        <li><a href="#">View Cart</a></li>
+        <li><a href="sign-out">Sign Out</a></li>
+            <%
+                }
+            %>
+    </ul>
+    
+     <%
+                if (customer != null) {
+            %>
+            <p>Welcome back <%= customer.getFirstName()%></p>
+            <%
+                }
+            %>
+
+</nav>

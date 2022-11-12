@@ -1,0 +1,16 @@
+# ignore generated artefacts
+bin/*.class
+doc
+out/
+# Ignore VSCode settings
+.vscode/settings.json
+
+# Ignore intellij native files
+.idea
+*.iml
+
+# Ignores mac native files
+.DS_Store
+
+# directory for test images
+assets
