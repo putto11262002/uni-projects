@@ -9,8 +9,5 @@ out/
 .idea
 *.iml
 
-# Ignores mac native files
-.DS_Store
-
 # directory for test images
 assets
