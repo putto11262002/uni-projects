@@ -1,8 +1,12 @@
-## Getting Started
+# Development process.
+This project was developed ba team of four students including myself. We used GitLab for our Version Control 
+Software and Microsoft Teams for collaboration. We have meetings that the beginning of each week to discuss features and bugs and allocate task to each team membeers. It took us approximately two months to deliver the software, with each team member spending around 5 hours per week on the project.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# Features
 
-## Folder Structure
+# Screenshots
+
+# Folder Structure
 
 The workspace contains two folders by default, where:
 
@@ -11,8 +15,3 @@ The workspace contains two folders by default, where:
 
 Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
