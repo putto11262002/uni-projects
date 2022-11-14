@@ -1,0 +1,2 @@
+# About COSC343 - Artificial Intelligence
+In this paper we looked at some different definitions of intelligence and at the concept of intelligent agents, concentrating on the issue of how to get information about the world and how to make use of it. We will consider techniques for machine learning and probabilistic reasoning. Almost every human ability results from learning from experience: we will look at how these learning processes can be modelled computationally.
